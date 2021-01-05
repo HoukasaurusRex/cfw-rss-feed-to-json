@@ -1,14 +1,12 @@
-name: Deploy
-
+name: deploy
 on:
   push:
     branches:
       - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy
+    name: deploy
     steps:
       - uses: actions/checkout@v2
       - name: Publish

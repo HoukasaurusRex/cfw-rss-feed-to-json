@@ -9,13 +9,13 @@ export const handleRequest = async (request: Request): Promise<Response> => {
   }
   const data = await feedToJson(feedURLDecoded)
   return new Response(JSON.stringify({ status: 'success', data}, undefined, 2), {
-    headers: { 'content-type': 'application/json;charset=UTF-8', 'cache-control': 'max-age=86400' },
+    headers: { 'content-type': 'application/json;charset=UTF-8', 'cache-control': 'max-age=86400', 'Access-Control-Allow-Origin': '*' },
     status: 200
   })
 }
 
 export const handleError = async (error: Error): Promise<Response> => 
   new Response(JSON.stringify({ status: 'error', type: error.name, messsage: error.message }, undefined, 2), {
-    headers: { 'content-type': 'application/json;charset=UTF-8' },
+    headers: { 'content-type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*' },
     status: 400
   })

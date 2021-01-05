@@ -1,7 +1,7 @@
 name = "cfw-rss-feed-to-json"
 type = "webpack"
-account_id = ""
+account_id = "6c2dc48a4bc1a6132668b42eba0ce558"
 workers_dev = true
-route = ""
-zone_id = ""
+route = "api.houk.space/feed-to-json"
+zone_id = "a520da35474f724fc7d54dcb32891f02"
 webpack_config = "webpack.config.js"

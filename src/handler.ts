@@ -9,7 +9,7 @@ export const handleRequest = async (request: Request): Promise<Response> => {
   }
   const data = await feedToJson(feedURLDecoded)
   return new Response(JSON.stringify({ status: 'success', data}, undefined, 2), {
-    headers: { 'content-type': 'application/json;charset=UTF-8', 'cache-control': 'max-age=86400', 'Access-Control-Allow-Origin': '*' },
+    headers: { 'content-type': 'application/json;charset=UTF-8', 'cache-control': 'max-age=3600', 'Access-Control-Allow-Origin': '*' },
     status: 200
   })
 }

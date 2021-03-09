@@ -41,14 +41,14 @@ paths:
                     schema:
                         $ref: Error
 components:
-  schemas:
-    Error:
-        type: object
-        required:
-            - status
-            - type
-            - message
-        properties:
-            status: string
-            type: string
-            message: string
+    schemas:
+        Error:
+            type: object
+            required:
+                - status
+                - type
+                - message
+            properties:
+                status: string
+                type: string
+                message: string

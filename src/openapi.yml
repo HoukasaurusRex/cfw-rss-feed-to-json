@@ -3,40 +3,43 @@ info:
   version: 1.0.0
   title: RSS Feed to JSON
 servers:
-  - url: 'http://localhost:3000'
+  - url: 'https://api.houk.space'
 paths:
-  /user:
+  /rss-feed-to-json:
     get:
-      summary: 'Sample endpoint: Returns details about a particular user'
-      operationId: listUser
+      summary: 'Converts rss from url in query to json'
+      operationId: getRssJson
       tags:
-        - user
+        - rss-feed-to-json
       parameters:
-        - name: id
+        - name: url
           in: query
-          description: ID of the user
+          description: 'URI encoded URL of feed'
           required: true
           schema:
-            type: integer
-            format: int32
+            type: string
       responses:
         '200':
-          description: 'Sample response: Details about a user by ID'
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        default:
-          description: Unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
+            description: 'JSON response from RSS feed'
+            headers:
+                Access-Control-Allow-Origin:
+                description: 'CORS support for all origins'
+                schema:
+                    type: string
+                cache-control:
+                description: 'Cache response for 1 hour'
+                schema:
+                    type: string
+            content:
+                application/json:
+                schema:
+                    type: object
+        400:
+            description: 'Bad request'
+            content:
+                application/json:
+                    schema:
+                        type: object
 components:
   schemas:
     User:

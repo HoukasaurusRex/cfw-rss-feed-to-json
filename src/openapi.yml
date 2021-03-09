@@ -2,53 +2,60 @@ openapi: 3.0.0
 info:
   version: 1.0.0
   title: RSS Feed to JSON
-servers:
-  - url: 'https://api.houk.space'
+  description: Fetches RSS feed and returns JSON response
 paths:
   /rss-feed-to-json:
     get:
       summary: 'Converts rss from url in query to json'
       operationId: getRssJson
       tags:
-        - rss-feed-to-json
+      - rss-feed-to-json
       parameters:
-        - name: url
-          in: query
-          description: 'URI encoded URL of feed'
-          required: true
-          schema:
-            type: string
+      - name: url
+        in: query
+        description: 'URI encoded URL of feed'
+        required: true
+        schema:
+          type: string
       responses:
-        '200':
-            description: 'JSON response from RSS feed'
-            headers:
-                Access-Control-Allow-Origin:
-                description: 'CORS support for all origins'
-                schema:
-                    type: string
-                cache-control:
-                description: 'Cache response for 1 hour'
-                schema:
-                    type: string
-            content:
-                application/json:
-                schema:
-                    type: object
-        400:
-            description: 'Bad request'
-            content:
-                application/json:
-                    schema:
-                        $ref: Error
-components:
-    schemas:
-        Error:
-            type: object
-            required:
-                - status
-                - type
-                - message
-            properties:
-                status: string
+        200:
+          description: 'JSON response from RSS feed'
+          headers:
+            Access-Control-Allow-Origin:
+              description: 'CORS support for all origins'
+              schema:
                 type: string
-                message: string
+            cache-control:
+              description: 'Cache response for 1 hour'
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+        400:
+          description: 'Bad request'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+      - status
+      - type
+      - message
+      properties:
+        status:
+          type: string
+        type:
+          type: string
+        message:
+          type: string
+
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/Pterobyte/rss-feed-to-json/1.0.0
